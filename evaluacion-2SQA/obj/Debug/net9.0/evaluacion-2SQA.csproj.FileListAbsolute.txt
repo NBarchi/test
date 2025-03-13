@@ -16,6 +16,7 @@ C:\Users\nicob\Desktop\Itsqmet\Cuarto Smestre\Calidad de Software\test\evaluacio
 C:\Users\nicob\Desktop\Itsqmet\Cuarto Smestre\Calidad de Software\test\evaluacion-2SQA\obj\Debug\net9.0\evaluacion-2SQA.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\nicob\Desktop\Itsqmet\Cuarto Smestre\Calidad de Software\test\evaluacion-2SQA\obj\Debug\net9.0\evaluacion-2SQA.RazorAssemblyInfo.cache
 C:\Users\nicob\Desktop\Itsqmet\Cuarto Smestre\Calidad de Software\test\evaluacion-2SQA\obj\Debug\net9.0\evaluacion-2SQA.RazorAssemblyInfo.cs
+C:\Users\nicob\Desktop\Itsqmet\Cuarto Smestre\Calidad de Software\test\evaluacion-2SQA\obj\Debug\net9.0\evaluacion-2SQA.sourcelink.json
 C:\Users\nicob\Desktop\Itsqmet\Cuarto Smestre\Calidad de Software\test\evaluacion-2SQA\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\nicob\Desktop\Itsqmet\Cuarto Smestre\Calidad de Software\test\evaluacion-2SQA\obj\Debug\net9.0\scopedcss\bundle\evaluacion-2SQA.styles.css
 C:\Users\nicob\Desktop\Itsqmet\Cuarto Smestre\Calidad de Software\test\evaluacion-2SQA\obj\Debug\net9.0\scopedcss\projectbundle\evaluacion-2SQA.bundle.scp.css

@@ -1,15 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using UserApp.Services;
 using UserApp.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace UserApp.Controllers
 {
     public class UserController : Controller
     {
         private readonly UserService _userService;
-        private const int PageSize = 5;
 
         public UserController(UserService userService)
         {
@@ -18,17 +15,18 @@ namespace UserApp.Controllers
 
         public async Task<IActionResult> Index(int page = 1)
         {
-            List<User> users = await _userService.GetUsersAsync(page, 10);
-
-            if (users == null)
-            {
-                users = new List<User>(); // Nunca pasar null a la vista
-            }
+            var users = await _userService.GetUsersAsync(page);
 
             ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = 10; // Puedes hacer un cálculo real aquí si lo necesitas
+            ViewBag.TotalPages = (int)Math.Ceiling((double)users.Info.Results / 10); 
 
-            return View(users);
+            return View(users.Results); 
+        }
+
+        public async Task<IActionResult> Details(string uuid)
+        {
+            var user = await _userService.GetUserAsync(uuid);
+            return View(user);
         }
     }
 }

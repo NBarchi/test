@@ -1,7 +1,6 @@
+using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using UserApp.Models;
 
 namespace UserApp.Services
@@ -9,32 +8,44 @@ namespace UserApp.Services
     public class UserService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "https://randomuser.me/api/";
 
         public UserService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        public async Task<List<User>> GetUsersAsync(int page, int pageSize)
+        public async Task<UserResponse> GetUsersAsync(int page = 1, int results = 100, string seed = "e587a5c809495696", string version = "1.4")
         {
-            try
-            {
-                string apiUrl = $"https://randomuser.me/api/?page={page}&results={pageSize}&seed=abc";
+            var url = $"https://randomuser.me/api/?seed={seed}&results={results}&page={page}&version={version}";
 
-                var response = await _httpClient.GetStringAsync(apiUrl);
-                var usersResponse = JsonSerializer.Deserialize<UserResponse>(response, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+            var response = await _httpClient.GetStringAsync(url);
 
-                return usersResponse?.Results ?? new List<User>(); // Evita retornar null
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al obtener usuarios: {ex.Message}");
-                return new List<User>(); // Retorna una lista vacía en caso de error
-            }
+            var users = JsonConvert.DeserializeObject<UserResponse>(response);
+
+            return users ?? new UserResponse();
+        }
+
+        public async Task<User> GetUserAsync(string uuid)
+        {
+            var response = await _httpClient.GetStringAsync($"https://randomuser.me/api/?uuid={uuid}&seed=abc");
+            var userResponse = JsonConvert.DeserializeObject<UserResponse>(response);
+
+            throw new Exception("No se pudo encontrar el usuario.");
         }
     }
+
+    public class UserResponse
+    {
+        public User[] Results { get; set; }
+        public Info Info { get; set; }
+    }
+
+    public class Info
+    {
+        public string Seed { get; set; }
+        public int Results { get; set; }
+        public int Page { get; set; }
+        public string Version { get; set; }
+    }
+
 }

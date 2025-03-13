@@ -62,9 +62,6 @@ namespace UserApp.Models
         public string Thumbnail { get; set; }  
     }
 
-    public class UserResponse
-    {
-        public List<User> Results { get; set; }
-    }
+    
 }
 

@@ -31,14 +31,14 @@ else
     <div>
         @if (ViewBag.CurrentPage > 1)
         {
-            <a href="/User/Index?page=@(ViewBag.CurrentPage - 1)">⬅ Anterior</a>
+            <a href="/User/Index?page=@(ViewBag.CurrentPage - 1)"> Anterior</a>
         }
 
         Página @ViewBag.CurrentPage de @ViewBag.TotalPages
 
         @if (ViewBag.CurrentPage < ViewBag.TotalPages)
         {
-            <a href="/User/Index?page=@(ViewBag.CurrentPage + 1)">Siguiente ➡</a>
+            <a href="/User/Index?page=@(ViewBag.CurrentPage + 1)">Siguiente</a>
         }
     </div>
 }
