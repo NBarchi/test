@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\evaluacion-2SQA.props" />
+</Project>

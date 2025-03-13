@@ -1,0 +1,44 @@
+﻿@model List<UserApp.Models.User>
+
+<h1>Lista de Usuarios</h1>
+
+@if (Model == null || Model.Count == 0)
+{
+    <p>No hay usuarios disponibles.</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>País</th>
+            <th>Acción</th>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td><img src="@user.Picture.Thumbnail" width="50"/></td>
+                <td>@user.Name.First @user.Name.Last</td>
+                <td>@user.Email</td>
+                <td>@user.Location.Country</td>
+                <td><a href="/User/Details/@Model.IndexOf(user)">Ver más</a></td>
+            </tr>
+        }
+    </table>
+
+    <div>
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <a href="/User/Index?page=@(ViewBag.CurrentPage - 1)">⬅ Anterior</a>
+        }
+
+        Página @ViewBag.CurrentPage de @ViewBag.TotalPages
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <a href="/User/Index?page=@(ViewBag.CurrentPage + 1)">Siguiente ➡</a>
+        }
+    </div>
+}

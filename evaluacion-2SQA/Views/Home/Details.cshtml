@@ -1,0 +1,31 @@
+@model UserApp.Models.User
+
+<h1>Detalles del Usuario</h1>
+
+<div style="border: 1px solid #ccc; padding: 20px; border-radius: 10px; width: 400px;">
+    <img src="@Model.Picture.Large" alt="Foto de @Model.Name.First" width="150" style="border-radius: 50%;" />
+    <h2>@Model.Name.Title @Model.Name.First @Model.Name.Last</h2>
+    
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Teléfono:</strong> @Model.Phone</p>
+    <p><strong>Celular:</strong> @Model.Cell</p>
+    <p><strong>Edad:</strong> @Model.Dob.Age años</p>
+    <p><strong>Género:</strong> @Model.Gender</p>
+
+    <h3>Ubicación</h3>
+    <p><strong>País:</strong> @Model.Location.Country</p>
+    <p><strong>Ciudad:</strong> @Model.Location.City</p>
+    <p><strong>Estado:</strong> @Model.Location.State</p>
+    <p><strong>Dirección:</strong> @Model.Location.Street.Number @Model.Location.Street.Name</p>
+
+    <h3>Coordenadas</h3>
+    <p><strong>Latitud:</strong> @Model.Location.Coordinates.Latitude</p>
+    <p><strong>Longitud:</strong> @Model.Location.Coordinates.Longitude</p>
+
+    <h3>Zona Horaria</h3>
+    <p><strong>Zona:</strong> @Model.Location.Timezone.Description</p>
+    <p><strong>Offset:</strong> @Model.Location.Timezone.Offset</p>
+
+    <br/>
+    <a href="/User/Index">⬅ Volver a la lista</a>
+</div>
